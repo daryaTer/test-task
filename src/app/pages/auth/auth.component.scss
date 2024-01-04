@@ -1,0 +1,18 @@
+.login-form {
+    margin-top: 50px;
+
+    .login-field {
+        display: block;
+        width: 300px;
+        margin: 10px auto;
+    }
+}
+
+mat-error {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+mat-form-field {
+    margin-bottom: 15px;
+}

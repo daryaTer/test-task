@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Create new task</h1>
+
+<div mat-dialog-content>
+    <form class="form" [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            @if(errorMessage.username || form.controls["username"].invalid){
+                <mat-error>{{errorMessage.username || "Field is invalid"}}</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            @if(errorMessage.email || form.controls["email"].invalid){
+                <mat-error>{{errorMessage?.email  || "Field is invalid"}}</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput formControlName="text">
+            @if(errorMessage.text || form.controls["text"].invalid){
+                <mat-error>{{errorMessage.text  || "Field is invalid"}}</mat-error>
+            }
+        </mat-form-field>
+    </form>
+</div>
+
+<button (click)="createTask()" style="padding: 10px;">Create</button>

@@ -1,0 +1,26 @@
+<div>
+  <a href="/tasks">Tasks</a>
+</div>
+<form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="form">
+  <mat-form-field class="login-field">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username">
+    @if(form.controls["username"].invalid){
+      <mat-error>{{"Field is invalid"}}</mat-error>
+    }
+    @if(errorMessage.username){
+      <mat-error>{{errorMessage.username}}</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="login-field">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password">
+    @if(form.controls["password"].invalid && !form.controls['password'].errors?.['customError']){
+      <mat-error>{{"Field is invalid"}}</mat-error>
+    }
+    @if(form.controls['password'].errors?.['customError']){
+      <mat-error>{{form.controls['password'].errors?.['customError']}}</mat-error>
+    }
+  </mat-form-field>
+  <button class="button" type="submit">Login</button>
+</form>

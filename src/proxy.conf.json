@@ -1,0 +1,11 @@
+{
+    "/~shapoval/test-task-backend/v2/*": {
+      "target": "https://uxcandy.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/~shapoval/test-task-backend/v2": ""
+      }
+    }
+  }

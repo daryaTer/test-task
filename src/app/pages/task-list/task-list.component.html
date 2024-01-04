@@ -1,0 +1,48 @@
+<div>
+    @if(!enableTaskEditButton){
+        <a class="button" href="/auth">Login</a>
+    } @else {
+        <p class="button" (click)="logout()">Logout</p>
+    }
+</div>
+<div class="header">
+    <div class="sort-settings">
+        <mat-radio-group class="radio-group" [(ngModel)]="selectedSortField" (change)="onSortSettingChanged()">
+            <mat-radio-button value="">default</mat-radio-button>
+            @for (field of sortFields; track field) {
+            <mat-radio-button [value]="field">{{field}}</mat-radio-button>
+            }
+        </mat-radio-group>
+        <mat-radio-group class="radio-group" [(ngModel)]="selectedSortDirection" (change)="onSortSettingChanged()">
+            <mat-radio-button value="asc">asc</mat-radio-button>
+            <mat-radio-button value="desc">desc</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="button" (click)="createTask()">Add Task</div>
+
+</div>
+
+
+<div class="task-list">
+    @if(tasks.length){
+    @for (task of tasks; track task.id) {
+    <div class="task">
+        <div class="header">
+            <span class="id">{{ task.id }}</span>
+            @if(enableTaskEditButton){
+            <div (click)="editTask(task.id)" class="edit-button">Edit Task</div>
+            }
+        </div>
+        <div class="username">{{task.username}}</div>
+        <div class="email">{{task.email}}</div>
+        <div class="text">{{task.text}}</div>
+
+    </div>
+    } @empty {
+    List of tasks is empty
+    }
+    }
+</div>
+
+<mat-paginator [length]="totalTasks" pageSize="3" [hidePageSize]="true" [showFirstLastButtons]="true" (page)="handlePageEvent($event)">
+</mat-paginator>
